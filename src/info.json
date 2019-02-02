@@ -1,0 +1,159 @@
+{ 
+    "products": [        
+            {"wallet" : {
+                "name": "portfel",
+                "parameters": {
+                    "standardPrice": 100,
+                    "thickness": [{
+                        "thickness1": [{
+                            "name": "1.5 mm",
+                            "price": 0
+                        }],
+                        "thickness2": [{
+                            "name": "2.5 mm",
+                            "price": 15
+                        }],
+                        "thickness3": [{
+                            "name": "3.5 mm",
+                            "price": 30
+                        }]
+                    }],                
+                    "color": [{
+                        "color1": [{
+                            "name": "naturalny",
+                            "price": 0
+                        }],
+                        "color2": [{
+                            "name": "ciemny brąz",
+                            "price": 10
+                        }],
+                        "color3": [{
+                            "name": "czarny",
+                            "price": 10
+                        }]
+                    }],
+                    "pocketsNO": [{
+                        "pocketsNO2": [{
+                            "name": "2 kieszenie",
+                            "price": 0
+                        }],
+                        "pocketsNO4": [{
+                            "name": "4 kieszenie",
+                            "price": 10
+                        }],
+                        "pocketsNO6": [{
+                            "name": "6 kieszeni",
+                            "price": 20
+                        }]
+                    }],
+                    "pattern": [{
+                        "pattern1": "kotwica",
+                        "pattern2": "jeleń",
+                        "pattern3": "ster"
+                    }]
+                }
+            },  
+    
+            "businessCardHolder" : {
+                "name": "wizytownik",
+                "parameters": {
+                    "standardPrice": 80,
+                    "thickness": [{
+                        "thickness1": [{
+                            "name": "1.5 mm",
+                            "price": 0
+                        }],
+                        "thickness2": [{
+                            "name": "2.5 mm",
+                            "price": 5
+                        }],
+                        "thickness3": [{
+                            "name": "3.5 mm",
+                            "price": 10
+                        }]
+                    }],                
+                    "color": [{
+                        "color1": [{
+                            "name": "naturalny",
+                            "price": 0
+                        }],
+                        "color2": [{
+                            "name": "ciemny brąz",
+                            "price": 5
+                        }],
+                        "color3": [{
+                            "name": "czarny",
+                            "price": 5
+                        }]
+                    }],
+                    "pocketsNO": [{
+                        "pocketsNO2": [{
+                            "name": "1 kieszeń",
+                            "price": 0
+                        }],
+                        "pocketsNO4": [{
+                            "name": "2 kieszenie",
+                            "price": 5
+                        }]
+                    }],
+                    "pattern": [{
+                        "pattern1": "kotwica",
+                        "pattern2": "jeleń",
+                        "pattern3": "ster"
+                    }]
+                }  
+            },
+
+            "belt" : {
+                "name": "pasek",
+                "parameters": {
+                    "standardPrice": 120,
+                    "thickness": [{
+                        "thickness1": [{
+                            "name": "1.5 mm",
+                            "price": 0
+                        }],
+                        "thickness2": [{
+                            "name": "2.5 mm",
+                            "price": 20
+                        }],
+                        "thickness3": [{
+                            "name": "3.5 mm",
+                            "price": 30
+                        }]
+                    }],                
+                    "length": [{
+                        "length1": [{
+                            "name": "90 cm",
+                            "price": 0
+                        }],
+                        "length2": [{
+                            "name": "120 cm",
+                            "price": 10
+                        }],
+                        "length3": [{
+                            "name": "150 cm",
+                            "price": 20
+                        }]
+                    }],
+                    "color": [{
+                        "color1": [{
+                            "name": "naturalny",
+                            "price": 0
+                        }],
+                        "color2": [{
+                            "name": "ciemny brąz",
+                            "price": 15
+                        }],
+                        "color3": [{
+                            "name": "czarny",
+                            "price": 15
+                        }]
+                    }]
+                }
+            }
+
+        }
+    ]
+}   
+    
