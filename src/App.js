@@ -5,7 +5,7 @@ import Header from './Header';
 import Calculator from './Calculator';
 import Order from './Order';
 import Footer from './Footer';
-import { HashRouter, Route, Link, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
 
 class App extends Component {
