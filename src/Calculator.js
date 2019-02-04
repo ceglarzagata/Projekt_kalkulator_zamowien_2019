@@ -97,7 +97,7 @@ class ParametersFormStandard extends Component {
     // } else {
       return (
         <>  
-        
+        {/* inna próba niezależna */}
           {/* <label>
               Wybierz kolor skóry:          
               <select>  
