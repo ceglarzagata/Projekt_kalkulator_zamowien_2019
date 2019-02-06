@@ -34,14 +34,33 @@ class ParametersFormStandard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lengthValue: ""
+      lengthValue: "",
+      sum: 0,
+      parametersObject: {}
     };
   }
   change = (e) => {
    this.setState({
-      [e.target.name]: e.target.value      
+      [e.target.name]: e.target.value
    })
+   const { parameters } = this.props.choosen;
+   for (const [key, value] of Object.entries(parameters)){
+    for (const [ , elem] of Object.entries(value)){
+      if(elem.name === e.target.value && key !== "pattern"){
+        this.setState(prevState => ({
+          parametersObject: {...prevState.parametersObject, [key]: elem.price}
+        }));  
+      }
+    }
+   }
+   this.props.changePrice(30);
   };
+  sumUp = () => {
+    let sumOfParameters = Object.values(this.state.parametersObject).reduce((prev, curr) => {
+      return prev + curr
+    })
+    console.log(sumOfParameters);
+  }
   changeBelt = (dataFromChild) => {
     this.setState({
      lengthValue: dataFromChild
@@ -49,6 +68,7 @@ class ParametersFormStandard extends Component {
    };
   render() {
     const { parameters } = this.props.choosen;
+    console.log("objeeeeeeekt", this.state.parametersObject);
     return (
       <>
         {
@@ -94,14 +114,16 @@ class ParametersFormStandard extends Component {
                     onChange = {this.change}
                   >
                   {
-                    params.map(param => (
-                      <option
-                        key = {param.name}
-                        value = {param.name}
-                      >
-                        {param.name}
-                      </option>
-                    ))
+                    params.map(param => {
+                      return (
+                        <option
+                          key = {param.name}
+                          value = {param.name}
+                        >
+                          {param.name}
+                        </option>
+                      )}
+                    )
                   }
                   </select>
                   <hr />
@@ -110,7 +132,7 @@ class ParametersFormStandard extends Component {
             }
           })
         }
-
+        <h1><strong>{this.state.sum}</strong></h1>
         <p>{this.state.selectedOption}</p>
         <p>{this.state.thickness}</p>
         <p>{this.state.color}</p>
@@ -126,15 +148,21 @@ class Calculator extends Component {
     super(props);
     this.state = {
       products: [],
-      choosen: null
+      choosen: null,
+      sum: null
     }
   }
   choose = (e) => {
     this.setState({
       // eslint-disable-next-line
-      choosen: this.state.products.find(row => row.id == e.target.value)
-    });    
+      choosen: this.state.products.find(row => row.id == e.target.value)      
+    });  
   };
+  changePrice = dataFromChild => {
+    this.setState(prevState => ({
+      sum: prevState.sum + dataFromChild
+    }))
+  }
   componentDidMount() {
     fetch('http://localhost:3000/products')
       .then(response => {
@@ -143,7 +171,8 @@ class Calculator extends Component {
       .then(data => {
         this.setState({
           products: data,
-          choosen: data[0]
+          choosen: data[0],
+          sum: data[0].standardPrice
         })
       })
       .catch(() => {
@@ -156,7 +185,7 @@ class Calculator extends Component {
     }
     return (
       <>
-        <h2>Sprawdź ile będzie kosztował Twój {this.state.choosen.name}</h2>
+        <h2>Sprawdź ile będzie kosztował Twój {this.state.choosen.name} {this.state.choosen.standardPrice}</h2>
         <form>
           <select onChange = {this.choose}>
             {
@@ -164,18 +193,17 @@ class Calculator extends Component {
                 return (
                 <option 
                 key = {el.id} 
-                value = {el.id}>
+                value = {el.id}
+                >
                   {el.name}
                 </option>
                 )
               })
             }
           </select>          
-          <ParametersFormStandard
-            choosen = {this.state.choosen}
-          />
+          <ParametersFormStandard choosen = {this.state.choosen} changePrice = {this.changePrice}/>
         </form>
-        <h2>Cena końcowa</h2>
+        <h2>Cena końcowa to {this.state.sum}zł</h2>
 
         <button>Złóż zamówienie</button>
       </>
