@@ -87,21 +87,6 @@ class ParametersFormStandard extends Component {
   //     aaaaaa: objectFromChild
   //   })
   // };
-  componentDidMount(){
-    const { parameters } = this.props.choosen;
-    for (const [key, value] of Object.entries(parameters)){
-      for (const [ i, elem] of Object.entries(value)){
-        // eslint-disable-next-line
-        if(i == 0){
-          this.setState(prevState => ({
-            paramsToOrder: {...prevState.paramsToOrder, [key]: elem.name},
-          }), 
-          );  
-        }
-      }
-    }    
-  }
-
 
   render() {
     console.log(this.state.paramsToOrder);
@@ -203,15 +188,32 @@ class Calculator extends Component {
     })
   }
   changePrice = (priceFromChild, parametersObjectFromChild) => {
-    this.setState({
+    console.log(parametersObjectFromChild)
+    this.setState(prevState => ({
       sum: this.state.choosen.standardPrice + priceFromChild,
-      parametersObject: parametersObjectFromChild
-    })
+      parametersObject: Object.assign({...prevState.parametersObject}, parametersObjectFromChild)
+    }))
   }
   orderButton = () => {
     this.setState({
-      // display:"none"
+      display:"none"
     })
+  }
+
+  sth = () => {
+    const { parameters } = this.state.choosen;
+    for (const [key, value] of Object.entries(parameters)){
+      for (const [ i, elem] of Object.entries(value)){
+        // eslint-disable-next-line
+        if(i == 0){
+          this.setState(prevState => ({
+            parametersObject: {...prevState.parametersObject, [key]: elem.name},
+          }), 
+          );  
+        }
+      }
+    }    
+
   }
   componentDidMount() {
     fetch('http://localhost:3000/products')
@@ -223,7 +225,7 @@ class Calculator extends Component {
           products: data,
           choosen: data[0],
           sum: data[0].standardPrice
-        })
+        }, this.sth)
       })
       .catch(() => {
         console.log("nie działa");
@@ -264,8 +266,8 @@ class Calculator extends Component {
           Złóż zamówienie
         </button> 
 
-        {/* <div style = {{display: this.state.display === "block" ? "none" : "block"}}> */}
-        <div style = {{display: "block"}}>
+        <div style = {{display: this.state.display === "block" ? "none" : "block"}}>
+        {/* <div style = {{display: "block"}}> */}
               
               
           <Order 

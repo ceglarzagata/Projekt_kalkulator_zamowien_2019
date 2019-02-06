@@ -29,15 +29,12 @@ class Order extends Component {
           {
             Object.entries(this.props.parameters).map(([key, params]) => {
               return (
-                <div key = {key}>
-                  <p>{key}: {params}</p>
-                </div>
+                <li key = {key}>
+                  {key}: {params}
+                </li>
               )
             })
           }
-          <li>Paramatry z formularza</li>
-          <li>Paramatry z formularza</li>
-          <li>Paramatry z formularza</li>
         </ul>
         <h3>Cena {this.props.finalSum}zł</h3>
 
