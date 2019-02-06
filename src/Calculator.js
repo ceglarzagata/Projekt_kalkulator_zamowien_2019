@@ -55,7 +55,7 @@ class ParametersFormStandard extends Component {
    const { parameters } = this.props.choosen;
    for (const [key, value] of Object.entries(parameters)){
     for (const [ , elem] of Object.entries(value)){
-      if(elem.name === e.target.value && key !== "pattern"){
+      if(elem.name === e.target.value){
         this.setState(prevState => ({
           paramsToOrder: {...prevState.paramsToOrder, [key]: elem.name},
           parametersObject: {...prevState.parametersObject, [key]: elem.price}
@@ -73,8 +73,8 @@ class ParametersFormStandard extends Component {
         return prev + curr;
       })
     }
-    console.log(sumUp);
-    console.log("objeeeeeeekt", this.state.parametersObject);
+    // console.log(sumUp);
+    // console.log("objeeeeeeekt", this.state.parametersObject);
 
     this.props.changePrice(
       sumUp,
@@ -89,9 +89,6 @@ class ParametersFormStandard extends Component {
   // };
 
   render() {
-    console.log(this.state.paramsToOrder);
-    console.log(this.state.parametersObject);
-
     const { parameters } = this.props.choosen;
     return (
       <>
@@ -159,7 +156,7 @@ class ParametersFormStandard extends Component {
             }
           })
         }
-        <p>{this.state.lengthValue}</p>
+        {/* <p>{this.state.lengthValue}</p> */}
       </>
     )
   }
@@ -186,6 +183,23 @@ class Calculator extends Component {
     this.setState({
       sum: this.state.choosen.standardPrice
     })
+    if (this.state.choosen.name === "pasek"){
+      let aaaaa = this.state.parametersObject;
+      delete aaaaa.pattern;
+      delete aaaaa.pocketsNO;
+      const { parameters } = this.state.choosen;
+      for (const [key, value] of Object.entries(parameters)){
+        for (const [ i, elem] of Object.entries(value)){
+          // eslint-disable-next-line
+          if(key === "length" && i == 0){
+            aaaaa.length = elem.name
+          }
+        } 
+      }     
+      this.setState({
+        parametersObject: aaaaa
+      })  
+    }
   }
   changePrice = (priceFromChild, parametersObjectFromChild) => {
     console.log(parametersObjectFromChild)
@@ -196,11 +210,11 @@ class Calculator extends Component {
   }
   orderButton = () => {
     this.setState({
-      display:"none"
+      // display:"none"
     })
   }
 
-  sth = () => {
+  initial = () => {
     const { parameters } = this.state.choosen;
     for (const [key, value] of Object.entries(parameters)){
       for (const [ i, elem] of Object.entries(value)){
@@ -225,7 +239,7 @@ class Calculator extends Component {
           products: data,
           choosen: data[0],
           sum: data[0].standardPrice
-        }, this.sth)
+        }, this.initial)
       })
       .catch(() => {
         console.log("nie działa");
@@ -266,8 +280,8 @@ class Calculator extends Component {
           Złóż zamówienie
         </button> 
 
-        <div style = {{display: this.state.display === "block" ? "none" : "block"}}>
-        {/* <div style = {{display: "block"}}> */}
+        {/* <div style = {{display: this.state.display === "block" ? "none" : "block"}}> */}
+        <div style = {{display: "block"}}>
               
               
           <Order 

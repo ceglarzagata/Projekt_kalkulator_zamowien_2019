@@ -49,13 +49,16 @@
           ],
           "pattern": [
             {
-              "name": "kotwica"
+              "name": "kotwica",
+              "price": 0
             },
             {
-              "name": "jeleń"
+              "name": "jeleń",
+              "price": 0
             },
             {
-              "name": "ster"
+              "name": "ster",
+              "price": 0
             }
           ]
         }
