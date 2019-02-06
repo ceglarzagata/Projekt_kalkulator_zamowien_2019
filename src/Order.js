@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 class Order extends Component {
+  componentDidMount() {
+
+  }
   render() {
     return (
       <>
@@ -21,14 +24,22 @@ class Order extends Component {
         </label>
 
         <h3>Podsumowanie zamówienia</h3>
-        <p>Produkt z formularza</p>
+        <p>{this.props.product}</p>
         <ul>
-          {/* //map */}
+          {
+            Object.entries(this.props.parameters).map(([key, params]) => {
+              return (
+                <div key = {key}>
+                  <p>{key}: {params}</p>
+                </div>
+              )
+            })
+          }
           <li>Paramatry z formularza</li>
           <li>Paramatry z formularza</li>
           <li>Paramatry z formularza</li>
         </ul>
-        <h3>Cena</h3>
+        <h3>Cena {this.props.finalSum}zł</h3>
 
         <p>Dodatkowe info:</p>
         <textarea value = "Dodatkowe info"></textarea>
