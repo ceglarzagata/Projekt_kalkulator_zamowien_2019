@@ -1,146 +1,123 @@
 import React, { Component } from 'react';
 
-
-class ParametersFormStandard extends Component {
+class BeltLength extends Component {
   constructor(props){
     super(props);
     this.state = {
-
+      lengthValue: ""
     }
   }
+  changeBeltLength = (e) => {
+    let value = e.target.value
+    this.setState ({
+      lengthValue: value
+    })
+    this.props.changeBeltLength(value)
+  }
+  render(){
+    return (
+      <div>
+        <label htmlFor = {this.props.keyValue}>Podaj obwód w pasie:</label>
+        <input
+          type = "number"                
+          id = {this.props.keyValue}
+          value = {this.state.lengthValue} 
+          onChange = {this.changeBeltLength}             
+        />
+        <hr />
+      </div>
+    )
+  }
+}
+
+class ParametersFormStandard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lengthValue: ""
+    };
+  }
+  change = (e) => {
+   this.setState({
+      [e.target.name]: e.target.value      
+   })
+  };
+  changeBelt = (dataFromChild) => {
+    this.setState({
+     lengthValue: dataFromChild
+    })
+   };
   render() {
-    console.log(this.props.parametersValue);
-    // if (this.props.choosen === "portfel" || this.props.choosen === "wizytownik"){
-    //   return(
-    //     <>
-    //       {
-    //         this.props.parametersValue.map((el) => {
-    //           return (
-    //             <>
-    //               <label>
-    //         Wybierz grubość skóry:          
-    //         <select>
-    //         {              
-    //           el.map((elm) => {
-    //             return (
-    //             <option 
-    //             key = {elm.name} 
-    //             value = {elm.name}>
-    //               {elm.name}
-    //             </option>
-    //             )
-    //           })
-    //         }
-    //       </select>          
-    //       </label>
-    //             </>
-    //           )
-    //         })
-    //       }
-    //     WZÓR
-    //       <label>
-    //         Wybierz grubość skóry:          
-    //         <select>    
-    //           {/* //mapa           */}      
-    //           <option>1</option>
-    //           <option>2</option>
-    //           <option>3</option>
-    //         </select>
-    //       </label>
+    const { parameters } = this.props.choosen;
+    return (
+      <>
+        {
+          Object.entries(parameters).map(([key, params]) => {
+            if(key === "pattern"){
+              return (
+                <div key = {key}>
+                  <label>Wybierz {key}: </label>                
+                  {
+                    params.map(param => {
+                      return (
+                        <div key = {param.name}>
+                          <input
+                            type = "radio"
+                            name = "selectedOption"
+                            id = {key}
+                            value = {param.name}
+                            checked = {this.state.selectedOption === param.name}
+                            onChange = {this.change}
+                          />
+                          <label htmlFor = {key}>{param.name}</label>
+                        </div>
+                      )                  
+                    })
+                  }                
+                </div>
+              )
+            } else if (key === "length") {
+              return (
+                <BeltLength 
+                  key = {key} 
+                  keyValue = {key} 
+                  changeBeltLength = {this.changeBelt}
+                />
+              )
+            } else {
+              return (
+                <div key = {key}>
+                  <label htmlFor = {key}>Wybierz {key}: </label>
+                  <select 
+                    id = {key} 
+                    name = {key} 
+                    onChange = {this.change}
+                  >
+                  {
+                    params.map(param => (
+                      <option
+                        key = {param.name}
+                        value = {param.name}
+                      >
+                        {param.name}
+                      </option>
+                    ))
+                  }
+                  </select>
+                  <hr />
+                </div>
+              )
+            }
+          })
+        }
 
-    //       <label>
-    //         Wybierz kolor skóry:          
-    //         <select>    
-    //           {/* //mapa           */}      
-    //           <option>1</option>
-    //           <option>2</option>
-    //           <option>3</option>
-    //         </select>
-    //       </label>
-
-    //       <label>
-    //         Wybierz liczbę kieszeni:          
-    //         <select>
-    //           {/* //mapa           */}         
-    //           <option>1</option>
-    //           <option>2</option>
-    //           <option>3</option>
-    //         </select>
-    //       </label>
-
-    //       <p>Wybierz wzór stempla:</p>
-    //       <label>
-    //         {/* //mapa           */}
-    //         <input
-    //           type="radio"
-    //           value="option2"
-    //         />
-    //         Option 1
-    //       </label>
-    //       <label>
-    //         <input
-    //           type="radio"
-    //           value="option2"
-    //         />
-    //         Option 2
-    //       </label>
-    //       <label>
-    //         <input
-    //           type="radio"
-    //           value="option2"
-    //         />
-    //         Option 3
-    //       </label>
-
-    //     </>
-    //   )
-    // } else {
-      return (
-        <>  
-        {/* inna próba niezależna */}
-          {/* <label>
-              Wybierz kolor skóry:          
-              <select>  
-                 {
-                   this.props.parametersValue.thickness.map((el) => {
-                     return (
-                       <option 
-                        key = {el.name}
-                        value = {el.name}>
-                          {el.name}
-                        </option>
-                     )
-                   })
-                 }       
-              </select>
-            </label> */}            
-        
-            <label>
-              Wybierz grubość skóry:          
-              <select>          
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-              </select>
-            </label>
-  
-            <label>
-              Podaj obwód w pasie (w cm):          
-              <input type = "number"/>
-            </label>
-  
-            <label>
-              Wybierz kolor skóry:          
-              <select>          
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-              </select>
-            </label> 
-        </>
-      )
-    // }
- 
+        <p>{this.state.selectedOption}</p>
+        <p>{this.state.thickness}</p>
+        <p>{this.state.color}</p>
+        <p>{this.state.pocketsNO}</p>
+        <p>{this.state.lengthValue}</p>
+      </>
+    )
   }
 }
 
@@ -148,46 +125,25 @@ class Calculator extends Component {
   constructor(props){
     super(props);
     this.state = {
-      url: 'http://localhost:3000/products',
       products: [],
-      choosen: "portfel",
-      wallet: [],
-      businessCardHolder: [],
-      belt: [],
-      parametersValue: []
+      choosen: null
     }
   }
   choose = (e) => {
     this.setState({
-      choosen: e.target.value
-    })
-    if(this.state.choosen === "portfel"){
-      this.setState({
-        parametersValue: this.state.wallet
-      })
-    } else if(this.state.choosen === "wizytownik"){
-      this.setState({
-        parametersValue: this.state.businessCardHolder
-      })
-    } else if(this.state.choosen === "pasek"){
-      this.setState({
-        parametersValue: this.state.belt
-      })
-    }
-  }
+      // eslint-disable-next-line
+      choosen: this.state.products.find(row => row.id == e.target.value)
+    });    
+  };
   componentDidMount() {
-    fetch(this.state.url)
+    fetch('http://localhost:3000/products')
       .then(response => {
-        console.log(response);
         return response.json()
       })
-      .then(data => {        
+      .then(data => {
         this.setState({
           products: data,
-          wallet: data[0].parameters,
-          businessCardHolder: data[1].parameters,
-          belt: data[2].parameters,
-          parametersValue: data[0].parameters
+          choosen: data[0]
         })
       })
       .catch(() => {
@@ -195,9 +151,12 @@ class Calculator extends Component {
       })
   }
   render() {
+    if (!this.state.choosen) {
+      return "Trwa ładowanie"
+    }
     return (
       <>
-        <h2>Sprawdź ile będzie kosztował Twój {this.state.choosen}</h2>
+        <h2>Sprawdź ile będzie kosztował Twój {this.state.choosen.name}</h2>
         <form>
           <select onChange = {this.choose}>
             {
@@ -205,20 +164,17 @@ class Calculator extends Component {
                 return (
                 <option 
                 key = {el.id} 
-                value = {el.name}>
+                value = {el.id}>
                   {el.name}
                 </option>
                 )
               })
             }
           </select>          
-          <ParametersFormStandard 
-            products = {this.state.products} 
+          <ParametersFormStandard
             choosen = {this.state.choosen}
-            parametersValue = {this.state.parametersValue}          
           />
         </form>
-        
         <h2>Cena końcowa</h2>
 
         <button>Złóż zamówienie</button>

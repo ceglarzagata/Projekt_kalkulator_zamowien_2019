@@ -49,13 +49,13 @@
           ],
           "pattern": [
             {
-              "pattern1": "kotwica"
+              "name": "kotwica"
             },
             {
-              "pattern2": "jeleń"
+              "name": "jeleń"
             },
             {
-              "pattern3": "ster"
+              "name": "ster"
             }
           ]
         }
@@ -105,13 +105,13 @@
           ],
           "pattern": [
             {
-              "pattern1": "kotwica"
+              "name": "kotwica"
             },
             {
-              "pattern2": "jeleń"
+              "name": "jeleń"
             },
             {
-              "pattern3": "ster"
+              "name": "ster"
             }
           ]
         }
