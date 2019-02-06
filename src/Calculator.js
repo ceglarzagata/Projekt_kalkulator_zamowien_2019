@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class BeltLength extends Component {
   constructor(props){
@@ -8,16 +9,24 @@ class BeltLength extends Component {
     }
   }
   changeBeltLength = (e) => {
-    let value = e.target.value
+    let value = e.target.value;
+    let lengthPrice = 0;
+    if (value < 90){
+      lengthPrice = this.props.lengthProperties[0].price
+    } else if (value >=90 && value < 120){
+      lengthPrice = this.props.lengthProperties[1].price
+    } else if (value >= 120) {
+      lengthPrice = this.props.lengthProperties[2].price
+    }
     this.setState ({
       lengthValue: value
     })
-    this.props.changeBeltLength(value)
+    this.props.changeBeltLength(lengthPrice, {[this.props.keyValue]: lengthPrice})
   }
   render(){
     return (
       <div>
-        <label htmlFor = {this.props.keyValue}>Podaj obwód w pasie:</label>
+        <label htmlFor = {this.props.keyValue}>Podaj obwód w pasie (w cm):</label>
         <input
           type = "number"                
           id = {this.props.keyValue}
@@ -35,7 +44,6 @@ class ParametersFormStandard extends Component {
     super(props);
     this.state = {
       lengthValue: "",
-      sum: 0,
       parametersObject: {}
     };
   }
@@ -49,26 +57,33 @@ class ParametersFormStandard extends Component {
       if(elem.name === e.target.value && key !== "pattern"){
         this.setState(prevState => ({
           parametersObject: {...prevState.parametersObject, [key]: elem.price}
-        }));  
+        }), this.updateSumInParent);  
       }
     }
-   }
-   this.props.changePrice(30);
+   }   
   };
-  sumUp = () => {
-    let sumOfParameters = Object.values(this.state.parametersObject).reduce((prev, curr) => {
-      return prev + curr
-    })
-    console.log(sumOfParameters);
+
+  updateSumInParent = () => {
+    let parametersObjectValue = Object.values(this.state.parametersObject);
+    let sumUp;
+    if(parametersObjectValue.length > 0){
+      sumUp = parametersObjectValue.reduce((prev, curr) => {
+        return prev + curr;
+      })
+    }
+    console.log(sumUp);
+    console.log("objeeeeeeekt", this.state.parametersObject);
+
+    this.props.changePrice(sumUp);
   }
-  changeBelt = (dataFromChild) => {
+  changeBelt = (dataFromChild, objectFromChild) => {
     this.setState({
-     lengthValue: dataFromChild
+      lengthValue: dataFromChild,
+      aaaaaa: objectFromChild
     })
-   };
+  };
   render() {
     const { parameters } = this.props.choosen;
-    console.log("objeeeeeeekt", this.state.parametersObject);
     return (
       <>
         {
@@ -100,7 +115,8 @@ class ParametersFormStandard extends Component {
               return (
                 <BeltLength 
                   key = {key} 
-                  keyValue = {key} 
+                  keyValue = {key}
+                  lengthProperties = {params}
                   changeBeltLength = {this.changeBelt}
                 />
               )
@@ -132,11 +148,6 @@ class ParametersFormStandard extends Component {
             }
           })
         }
-        <h1><strong>{this.state.sum}</strong></h1>
-        <p>{this.state.selectedOption}</p>
-        <p>{this.state.thickness}</p>
-        <p>{this.state.color}</p>
-        <p>{this.state.pocketsNO}</p>
         <p>{this.state.lengthValue}</p>
       </>
     )
@@ -156,12 +167,21 @@ class Calculator extends Component {
     this.setState({
       // eslint-disable-next-line
       choosen: this.state.products.find(row => row.id == e.target.value)      
-    });  
+    }, this.updatePrice);  
   };
+  updatePrice = () => {
+    this.setState({
+      sum: this.state.choosen.standardPrice
+    })
+  }
   changePrice = dataFromChild => {
-    this.setState(prevState => ({
-      sum: prevState.sum + dataFromChild
-    }))
+    this.setState({
+      sum: this.state.choosen.standardPrice + dataFromChild
+    })
+  }
+  submit = (e) => {
+    e.preventDefault();
+
   }
   componentDidMount() {
     fetch('http://localhost:3000/products')
@@ -205,7 +225,7 @@ class Calculator extends Component {
         </form>
         <h2>Cena końcowa to {this.state.sum}zł</h2>
 
-        <button>Złóż zamówienie</button>
+        <button onClick = {this.submit}>Złóż zamówienie</button>
       </>
     );
   }
