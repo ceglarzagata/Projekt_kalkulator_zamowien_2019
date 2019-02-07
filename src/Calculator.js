@@ -45,7 +45,8 @@ class ParametersFormStandard extends Component {
     this.state = {
       lengthValue: "",
       parametersObject: {},
-      paramsToOrder: {}
+      paramsToOrder: {},
+      selectedOption: "kotwica"
     };
   }
   change = (e) => {
@@ -176,30 +177,26 @@ class Calculator extends Component {
   choose = (e) => {
     this.setState({
       // eslint-disable-next-line
-      choosen: this.state.products.find(row => row.id == e.target.value)      
+      choosen: this.state.products.find(row => row.id == e.target.value),
+      parametersObject: 0
     }, this.updatePrice);  
   };
   updatePrice = () => {
     this.setState({
       sum: this.state.choosen.standardPrice
     })
-    if (this.state.choosen.name === "pasek"){
-      let aaaaa = this.state.parametersObject;
-      delete aaaaa.pattern;
-      delete aaaaa.pocketsNO;
-      const { parameters } = this.state.choosen;
-      for (const [key, value] of Object.entries(parameters)){
-        for (const [ i, elem] of Object.entries(value)){
-          // eslint-disable-next-line
-          if(key === "length" && i == 0){
-            aaaaa.length = elem.name
-          }
-        } 
-      }     
-      this.setState({
-        parametersObject: aaaaa
-      })  
-    }
+    const { parameters } = this.state.choosen;
+    for (const [key, value] of Object.entries(parameters)){
+      for (const [ i, elem] of Object.entries(value)){
+        // eslint-disable-next-line
+        if(i == 0){
+          this.setState(prevState => ({
+            parametersObject: {...prevState.parametersObject, [key]: elem.name},
+          }), 
+          );  
+        }
+      }
+    }    
   }
   changePrice = (priceFromChild, parametersObjectFromChild) => {
     console.log(parametersObjectFromChild)
