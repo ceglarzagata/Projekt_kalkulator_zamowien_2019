@@ -92,7 +92,7 @@ class ParametersFormStandard extends Component {
   render() {
     const { parameters } = this.props.choosen;
     return (
-      <>
+      <div className = "formContent">
         {
           Object.entries(parameters).map(([key, params]) => {
             if(key === "pattern"){
@@ -102,7 +102,7 @@ class ParametersFormStandard extends Component {
                   {
                     params.map(param => {
                       return (
-                        <div key = {param.name}>
+                        <div key = {param.name} className = "radio">
                           <input
                             type = "radio"
                             name = "selectedOption"
@@ -158,7 +158,7 @@ class ParametersFormStandard extends Component {
           })
         }
         {/* <p>{this.state.lengthValue}</p> */}
-      </>
+      </div>
     )
   }
 }
@@ -247,39 +247,35 @@ class Calculator extends Component {
       return "Trwa ładowanie"
     }
     return (
-      <>
-        <div style = {{display: this.state.display}}>
-          <h2>Sprawdź ile będzie kosztował Twój {this.state.choosen.name} {this.state.choosen.standardPrice}</h2>
-          <form>
-            <select onChange = {this.choose}>
-              {
-                this.state.products.map((el) => {
-                  return (
-                  <option 
+      <main className = "container">        
+        <form style = {{display: this.state.display}}>
+          <label className = "mainLabel">Sprawdź ile będzie kosztował Twój: </label>
+          <select className = "mainSelect" onChange = {this.choose}>
+            {
+              this.state.products.map((el) => {
+                return (
+                <option 
                   key = {el.id} 
                   value = {el.id}
-                  >
-                    {el.name}
-                  </option>
-                  )
-                })
-              }
-            </select>          
-            <ParametersFormStandard choosen = {this.state.choosen} changePrice = {this.changePrice}/>
-          </form>
+                >
+                  {el.name}
+                </option>
+                )
+              })
+            }              
+          </select>            
+          <ParametersFormStandard choosen = {this.state.choosen} changePrice = {this.changePrice}/>
           <h2>Cena końcowa to {this.state.sum}zł</h2>
-        </div>
-
-        <button 
-          onClick = {this.orderButton}
-          style = {{display: this.state.display}}
-        >
-          Złóż zamówienie
-        </button> 
-
-        {/* <div style = {{display: this.state.display === "block" ? "none" : "block"}}> */}
-        <div style = {{display: "block"}}>
-              
+          <button 
+            onClick = {this.orderButton}
+            className = "button"
+          >
+            Złóż zamówienie
+          </button> 
+        </form>
+          
+        {/* <m style = {{display: this.state.display === "block" ? "none" : "block"}}> */}
+        <div style = {{display: "block"}}>              
               
           <Order 
             product = {this.state.choosen.name} 
@@ -287,7 +283,7 @@ class Calculator extends Component {
             finalSum = {this.state.sum}
           />
         </div>   
-      </>
+      </main>
     );
   }
 }

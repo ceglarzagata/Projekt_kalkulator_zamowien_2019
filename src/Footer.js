@@ -19,7 +19,7 @@ class InfoContact extends Component {
   render() {
     return (
       <>
-        <h1>LOGO</h1>
+        <h1>PunchLine LetherCraft</h1>
         <p>info kontakt</p>
         <ul>
           <li>nazwa</li>

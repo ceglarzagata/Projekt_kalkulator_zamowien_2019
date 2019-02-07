@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Dosis:400,600&subset=latin-ext');
+@import "reset.scss";
+@import "variables.scss";
+@import "mixins.scss";
+
+@import "common/common.scss";
+@import "common/buttons.scss";
+
+@import "modules/header.scss";
+@import "modules/calculator.scss";
+@import "modules/order.scss";
+@import "modules/footer.scss";

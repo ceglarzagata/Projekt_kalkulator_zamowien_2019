@@ -1,0 +1,33 @@
+main {
+    .mainLabel {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+    .mainSelect {
+        font-size: 1.3rem;
+        font-weight: bold;
+        display: block;
+        margin: 0 auto;
+        padding: 0 0 0 1rem;
+        text-align: center;
+        border-radius: 0.4rem;
+        box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.75);
+    }
+    .formContent {
+        background-color: white;
+        margin: 1rem auto;
+        padding: 1rem;
+        border-radius: 0.4rem;
+        box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.75);
+        .radio {
+            display: inline-block;
+            padding: 0 0.4rem;
+            label {
+                padding-left: 0.4rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    @include medium-up {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;        
+    }
+        .contact {
+            margin: 1rem 0 0 0;
+            @include medium-up {
+                margin: 0;
+
+            }
+        }
+  }
+img {
+    background-color: $button-background;
+}

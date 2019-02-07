@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './Reset.scss';
-import './App.scss';
+import './style/App.scss';
 import Header from './Header';
 import Calculator from './Calculator';
 import Order from './Order';

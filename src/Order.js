@@ -10,7 +10,8 @@ class Order extends Component {
       phone: "",
       info: "Wpisz dodatkowe informacje",
       display: "none",
-      disabled: false
+      disabled: false,
+      buttonClass: "button"
     }
   }
   changeOrder = (e) => {
@@ -38,7 +39,8 @@ class Order extends Component {
       })
       });
       this.setState({
-        disabled: true
+        disabled: true,
+        buttonClass: "button disabled"
       })
    };
   render() {
@@ -101,7 +103,13 @@ class Order extends Component {
             value = {this.state.info}
             onChange = {this.changeOrder}
           />
-          <button type = "submit" disabled = {this.state.disabled}>Zamów</button>
+          <button 
+            type = "submit" 
+            disabled = {this.state.disabled}
+            className = {this.state.buttonClass}
+          >
+            Zamów
+          </button>
         </form>
         <div className = "orderConfirmationPopUp" style = {{display: this.state.display}}></div>
       </>

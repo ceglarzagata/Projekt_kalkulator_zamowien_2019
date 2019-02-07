@@ -1,0 +1,16 @@
+.button {
+    font-family: $text-font;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    padding: 0.5rem 3rem;
+    background-color: $button-background;
+    border: none;
+    border-bottom: 3px solid $text-color;
+    border-radius: 0.4rem;
+}
+
+.button.disabled {
+    background-color: $button-background-disabled;
+    color: $button-color-disabled
+}
