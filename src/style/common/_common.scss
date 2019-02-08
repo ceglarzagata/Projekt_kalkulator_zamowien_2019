@@ -80,3 +80,19 @@ textarea {
 input[type="radio"] {
     vertical-align: middle;
 }
+
+.formContent {
+    background-color: white;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.75);
+}
+
+.sumUp {
+    padding: 1rem 1rem 0 1rem;
+    text-align: center;
+    background-color: $bg-second-color;
+    border: 1px solid $details-color;
+    border-radius: 0.4rem;
+}

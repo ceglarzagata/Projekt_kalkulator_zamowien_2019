@@ -1,29 +1,28 @@
-main {
-    .mainLabel {
-        font-size: 1.5rem;
-        font-weight: bold;
-        display: block;
-        margin-bottom: 0.5rem;
-        text-align: center;
-    }
-    .mainSelect {
-        font-size: 1.3rem;
-        font-weight: bold;
-        display: block;
-        margin: 0 auto;
-        padding: 0.1rem 0 0.2rem 1rem;
-        text-align: center;
-        box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.75);
+.mainLabel {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+.mainSelect {
+    font-size: 1.3rem;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    padding: 0.1rem 0 0.2rem 1rem;
+    text-align: center;
+    box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.75);
+}
+.formCalculator {
+    @include medium-up {
+        display: flex;
+        justify-content: space-around;
     }
     .formContent {
-        background-color: white;
-        margin: 1rem auto;
-        padding: 1rem;
-        border-radius: 0.4rem;
-        box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.75);
-        // @include medium-up {
-
-        // }
+        @include medium-up {
+            width:40%;
+        }
         select {
             margin-left: 0.4rem;
             padding:  0.1rem 0.4rem;
@@ -37,14 +36,17 @@ main {
             }
         }
     }
-    .sumUp {
-        padding: 1rem 1rem 0 1rem;
-        text-align: center;
-        background-color: $bg-second-color;
-        border: 1px solid $details-color;
-        border-radius: 0.4rem;
-        // @include medium-up {
-
-        // }
+    .images {
+        margin: 1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        img {
+            width: 50%;
+            box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.75);
+            border-radius: 0.4rem;
+        }
+        @include medium-up {
+            width: 40%;
+        }
     }
 }

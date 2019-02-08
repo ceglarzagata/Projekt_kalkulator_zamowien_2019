@@ -92,72 +92,91 @@ class ParametersFormStandard extends Component {
   render() {
     const { parameters } = this.props.choosen;
     return (
-      <div className = "formContent">
-        {
-          Object.entries(parameters).map(([key, params]) => {
-            if(key === "pattern"){
-              return (
-                <div key = {key}>
-                  <label>Wybierz {key}: </label>                
-                  {
-                    params.map(param => {
-                      return (
-                        <div key = {param.name} className = "radio">
-                          <input
-                            type = "radio"
-                            name = "selectedOption"
-                            id = {key}
+      <div className = "formCalculator">
+        <div className = "formContent">
+          {
+            Object.entries(parameters).map(([key, params]) => {
+              if(key === "pattern"){
+                return (
+                  <div key = {key}>
+                    <label>Wybierz {key}: </label>                
+                    {
+                      params.map(param => {
+                        return (
+                          <div key = {param.name} className = "radio">
+                            <input
+                              type = "radio"
+                              name = "selectedOption"
+                              id = {key}
+                              value = {param.name}
+                              checked = {this.state.selectedOption === param.name}
+                              onChange = {this.change}
+                            />
+                            <label htmlFor = {key}>{param.name}</label>
+                          </div>
+                        )                  
+                      })
+                    }                
+                  </div>
+                )
+              } 
+              // else if (key === "length") {
+              //   return (
+              //     <BeltLength 
+              //       key = {key} 
+              //       keyValue = {key}
+              //       lengthProperties = {params}
+              //       changeBeltLength = {this.changeBelt}
+              //     />
+              //   )
+              // } 
+              else {
+                return (
+                  <div key = {key}>
+                    <label htmlFor = {key}>Wybierz {key}: </label>
+                    <select 
+                      id = {key} 
+                      name = {key} 
+                      onChange = {this.change}
+                    >
+                    {
+                      params.map(param => {
+                        return (
+                          <option
+                            key = {param.name}
                             value = {param.name}
-                            checked = {this.state.selectedOption === param.name}
-                            onChange = {this.change}
-                          />
-                          <label htmlFor = {key}>{param.name}</label>
-                        </div>
-                      )                  
-                    })
-                  }                
-                </div>
-              )
-            } 
-            // else if (key === "length") {
-            //   return (
-            //     <BeltLength 
-            //       key = {key} 
-            //       keyValue = {key}
-            //       lengthProperties = {params}
-            //       changeBeltLength = {this.changeBelt}
-            //     />
-            //   )
-            // } 
-            else {
+                          >
+                            {param.name}
+                          </option>
+                        )}
+                      )
+                    }
+                    </select>
+                    <hr />
+                  </div>
+                )
+              }
+            })
+          }
+          {/* <p>{this.state.lengthValue}</p> */}
+        </div>
+        <div className = "images">
+          {
+            Object.entries(parameters).map(([key, params]) => {
               return (
-                <div key = {key}>
-                  <label htmlFor = {key}>Wybierz {key}: </label>
-                  <select 
-                    id = {key} 
-                    name = {key} 
-                    onChange = {this.change}
-                  >
-                  {
-                    params.map(param => {
-                      return (
-                        <option
-                          key = {param.name}
-                          value = {param.name}
-                        >
-                          {param.name}
-                        </option>
-                      )}
+                params.map(param => { 
+                  if (this.state[key] === param.name || this.state.selectedOption === param.name){
+                    return (
+                      <img key = {param.name} src = {param.image} alt = {param.name}/>
                     )
+                  } else {
+                    return null
                   }
-                  </select>
-                  <hr />
-                </div>
-              )
-            }
-          })
-        }
-        {/* <p>{this.state.lengthValue}</p> */}
+                })
+              ) 
+            })
+          }
+        </div>
       </div>
     )
   }
@@ -247,7 +266,7 @@ class Calculator extends Component {
       return "Trwa ładowanie"
     }
     return (
-      <main className = "container">        
+      <div className = "container">        
         <form style = {{display: this.state.display}}>
           <label className = "mainLabel">Sprawdź ile będzie kosztował Twój: </label>
           <select className = "mainSelect" onChange = {this.choose}>
@@ -285,7 +304,7 @@ class Calculator extends Component {
             finalSum = {this.state.sum}
           />
         </div>   
-      </main>
+      </div>
     );
   }
 }
