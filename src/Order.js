@@ -8,7 +8,7 @@ class Order extends Component {
       surname: "",
       mail: "",
       phone: "",
-      info: "Wpisz dodatkowe informacje",
+      info: "",
       display: "none",
       disabled: false,
       buttonClass: "button"
@@ -45,74 +45,76 @@ class Order extends Component {
    };
   render() {
     return (
-      <>
+      <div className = "orderSection">
         <h2>Formularz złożenia zamówienia</h2>
-        <form onSubmit = {this.handleSubmit}>
-          <h3>Dane kontaktowe</h3>
-          <label>Imię
-            <input 
-              type = "text" 
-              name = "name" 
-              value = {this.state.name}
+        <form onSubmit = {this.handleSubmit} className = "orderForm">
+          <div className = "formContent">
+            <h3>Dane kontaktowe</h3>
+            <label>Imię
+              <input 
+                type = "text" 
+                name = "name" 
+                value = {this.state.name}
+                onChange = {this.changeOrder}
+              />
+            </label>
+            <label>Nazwisko
+              <input 
+                type = "text" 
+                name = "surname" 
+                value = {this.state.surname}
+                onChange = {this.changeOrder}
+              />
+            </label>
+            <label>Numer telefonu
+              <input 
+                type = "number" 
+                name = "phone" 
+                value = {this.state.phone}
+                onChange = {this.changeOrder}
+              />
+            </label>
+            <label>E-mail
+              <input 
+                type = "email" 
+                name = "mail" 
+                value = {this.state.mail}
+                onChange = {this.changeOrder}
+              />
+            </label>
+            <p>Dodatkowe info:</p>
+            <textarea 
+              name = "info" 
+              value = {this.state.info}
               onChange = {this.changeOrder}
             />
-          </label>
-          <label>Nazwisko
-            <input 
-              type = "text" 
-              name = "surname" 
-              value = {this.state.surname}
-              onChange = {this.changeOrder}
-            />
-          </label>
-          <label>Numer telefonu
-            <input 
-              type = "number" 
-              name = "phone" 
-              value = {this.state.phone}
-              onChange = {this.changeOrder}
-            />
-          </label>
-          <label>E-mail
-            <input 
-              type = "email" 
-              name = "mail" 
-              value = {this.state.mail}
-              onChange = {this.changeOrder}
-            />
-          </label>
-
-          <h3>Podsumowanie zamówienia</h3>
-          <p>{this.props.product}</p>
-          <ul>
-            {
-              Object.entries(this.props.parameters).map(([key, params]) => {
-                return (
-                  <li key = {key}>
-                    {key}: {params}
-                  </li>
-                )
-              })
-            }
-          </ul>
-          <h3>Cena {this.props.finalSum}zł</h3>
-
-          <p>Dodatkowe info:</p>
-          <textarea 
-            name = "info" 
-            value = {this.state.info}
-            onChange = {this.changeOrder}
-          />
-          <button 
-            type = "submit" 
-            disabled = {this.state.disabled}
-            className = {this.state.buttonClass}
-          >
-            Zamów
-          </button>
+          </div>
+          <div className = "sumUp">
+            <h3>Podsumowanie zamówienia</h3>
+            <h4>Wybrałaś/eś: <strong>{this.props.product}</strong></h4>
+            <ul>
+              {
+                Object.entries(this.props.parameters).map(([key, params]) => {
+                  return (
+                    <li key = {key}>
+                      {key}: <strong>{params}</strong>
+                    </li>
+                  )
+                })
+              }
+            </ul>
+            <h3>Cena zamówienia: {this.props.finalSum}zł</h3>
+            <button 
+              type = "submit" 
+              disabled = {this.state.disabled}
+              className = {this.state.buttonClass}
+            >
+              Zamów
+            </button>
+          </div>          
         </form>
         <div className = "orderConfirmationPopUp" style = {{display: this.state.display}}></div>
-      </>
+      </div>
     );
   }
 }

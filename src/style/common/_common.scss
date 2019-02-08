@@ -9,6 +9,10 @@ body {
     line-height: 1.4;
 }
   
+.container {
+    margin: 1rem;
+}
+
 h1 {
     font-family: $logo-font;
     font-size: 2.5rem;
@@ -21,18 +25,21 @@ h2 {
     font-size: 1.4rem;
     font-weight: bold;
     color: $headings-color;
+    text-align: center;
 }
   
 h3 {
     font-size: 1.2rem;
     font-weight: bold;
     color: $headings-color;
+    text-align: center;
 }
   
 h4 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: $headings-color;
     margin-top: 0.3rem;
+    text-align: center;
 }
   
 a {
@@ -40,14 +47,34 @@ a {
     text-decoration: none;
 }
 
-.container {
-    margin: 1rem;
+li {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    text-align: left;
 }
 
 select {
     font-family: $text-font;
     color: $text-color;
     vertical-align: bottom;
+    border: 1px solid $details-color;
+    border-radius: 0.4rem;
+}
+
+input {
+    font-family: $text-font;
+    color: $text-color;
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+    border: 1px solid $details-color;
+    box-shadow: none;
+}
+
+textarea {
+    font-family: $text-font;
+    color: $text-color;
+    border-radius: 0.4rem;
+    border: 1px solid $details-color;
 }
 
 input[type="radio"] {

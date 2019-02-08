@@ -265,13 +265,15 @@ class Calculator extends Component {
             }              
           </select>            
           <ParametersFormStandard choosen = {this.state.choosen} changePrice = {this.changePrice}/>
-          <h2>Cena końcowa to {this.state.sum}zł</h2>
-          <button 
-            onClick = {this.orderButton}
-            className = "button"
-          >
-            Złóż zamówienie
-          </button> 
+          <div className = "sumUp">
+            <h3>Cena końcowa to {this.state.sum}zł</h3>
+            <button 
+              onClick = {this.orderButton}
+              className = "button"
+            >
+              Złóż zamówienie
+            </button>
+          </div>
         </form>
           
         {/* <m style = {{display: this.state.display === "block" ? "none" : "block"}}> */}
