@@ -1,8 +1,10 @@
 
 .orderSection {
+    position: relative;
     h2 {
         margin-top: 1rem;
         @include medium-up {
+            margin-top: 0;
             margin-bottom: 1rem;
         }
     }
@@ -52,6 +54,41 @@
             button {
                 margin-top: 0;
             }
+        }
+    }
+    .validationInfo {
+        margin-top: 1rem;
+        padding: 0.1rem 0.2rem;
+        text-align: center;
+        background-color: #b50f0f;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 0.4rem;
+    }
+    .orderConfirmationPopUp {
+        width: 80%;
+        padding: 2rem;
+        font-size: 1.2rem;
+        color: #fff;
+        text-align: center;
+        background-color: rgba(0, 218, 127, 0.9);
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 0.4rem;
+        -webkit-box-shadow: 0px 3px 13px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 3px 13px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 3px 13px 0px rgba(0,0,0,0.75);
+        @include medium-up {
+            font-size: 1.5rem;
+            transform: translate(-50%,-50%);
+            top: 50%;
+        }
+        i {
+            display: block;
+            font-size: 2.5rem;
+            margin-top: 1rem;
         }
     }
 }

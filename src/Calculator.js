@@ -127,7 +127,32 @@ class ParametersFormStandard extends Component {
     )
   }
 }
-
+class SumUp extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: "block"
+    }
+  }
+  orderButton = () => {
+    this.setState({
+      display: "none"
+    }, () => this.props.orderButton(this.state.display))    
+  }
+  render () {
+    return (
+      <div className = "sumUp">
+        <h3>Cena końcowa to {this.props.sum}zł</h3>
+        <button 
+          onClick = {this.orderButton}
+          className = "button"
+        >
+          Złóż zamówienie
+        </button>
+      </div>
+    )
+  }
+}
 class Calculator extends Component {
   constructor(props){
     super(props);
@@ -171,9 +196,9 @@ class Calculator extends Component {
       parametersObject: Object.assign({...prevState.parametersObject}, parametersObjectFromChild)
     }))
   }
-  orderButton = () => {
+  orderButton = (data) => {
     this.setState({
-      // display:"none"
+      display: data
     })
   }
 
@@ -189,8 +214,7 @@ class Calculator extends Component {
           );  
         }
       }
-    }    
-
+    }
   }
   componentDidMount() {
     fetch('http://localhost:3000/products')
@@ -235,20 +259,13 @@ class Calculator extends Component {
             choosen = {this.state.choosen}
             changePrice = {this.changePrice}
           />
-          <div className = "sumUp">
-            <h3>Cena końcowa to {this.state.sum}zł</h3>
-            <button 
-              onClick = {this.orderButton}
-              className = "button"
-            >
-              Złóż zamówienie
-            </button>
-          </div>
+          <SumUp 
+            sum = {this.state.sum} 
+            orderButton = {this.orderButton}
+          />
         </form>
           
-        {/* <main style = {{display: this.state.display === "block" ? "none" : "block"}}> */}
-        <div style = {{display: "block"}}>              
-              
+        <div style = {{display: this.state.display === "block" ? "none" : "block"}}>
           <Order 
             product = {this.state.choosen.name} 
             parameters = {this.state.parametersObject}

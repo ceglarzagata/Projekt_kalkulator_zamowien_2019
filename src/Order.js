@@ -12,7 +12,9 @@ class Order extends Component {
       display: "none",
       disabled: false,
       buttonClass: "button",
-      validationInfo: ""
+      validationInfo: "",
+      validationDisplay: "none",
+      popUpDisplay: "none"
     }
   }
   changeOrder = (e) => {
@@ -24,23 +26,28 @@ class Order extends Component {
     event.preventDefault();
     if (this.state.name === "" || this.state.name.length < 2){
       this.setState({
-        validationInfo: "Podaj imię"
+        validationInfo: "Podaj imię",
+        validationDisplay: "block"
       })
     } else if (this.state.surname === "" || this.state.surname.length < 2) {
       this.setState({
-        validationInfo: "Podaj nazwisko"
+        validationInfo: "Podaj nazwisko",
+        validationDisplay: "block"
       })
     } else if (this.state.phone === "") {
       this.setState({
-        validationInfo: "Podaj numer telefonu"
+        validationInfo: "Podaj numer telefonu",
+        validationDisplay: "block"
       })
     } else if (this.state.phone.length !== 9) {
       this.setState({
-        validationInfo: "Sprawdź czy wpisałaś/eś poprawny numer telefonu"
+        validationInfo: "Sprawdź czy wpisałaś/eś poprawny numer telefonu",
+        validationDisplay: "block"
       })
     } else if (this.state.mail === "") {
       this.setState({
-        validationInfo: "Podaj adres e-mail"
+        validationInfo: "Podaj adres e-mail",
+        validationDisplay: "block"
       })
     } else {
       fetch('http://localhost:3008/orders', {
@@ -62,7 +69,9 @@ class Order extends Component {
         });
         this.setState({
           disabled: true,
-          buttonClass: "button disabled"
+          buttonClass: "button disabled",
+          validationDisplay: "none",
+          popUpDisplay: "block"
         })
       }
    };
@@ -111,6 +120,11 @@ class Order extends Component {
               value = {this.state.info}
               onChange = {this.changeOrder}
             />
+            <div 
+              className = "validationInfo" 
+              style = {{display: this.state.validationDisplay}}>
+                {this.state.validationInfo}
+            </div>
           </div>
           <div className = "sumUp">
             <h3>Podsumowanie zamówienia</h3>
@@ -136,8 +150,13 @@ class Order extends Component {
             </button>
           </div>          
         </form>
-        <div className = "validationInfo">{this.state.validationInfo}</div>
-        <div className = "orderConfirmationPopUp" style = {{display: this.state.display}}></div>
+        <div 
+          className = "orderConfirmationPopUp" 
+          style = {{display: this.state.popUpDisplay}}
+        >
+          Twoje zamówienie zostało wysłane poprawnie!
+          <i className = "far fa-check-circle"></i>
+        </div>
       </div>
     );
   }
