@@ -4,8 +4,14 @@
     };
   }
   
-  @mixin desktop-up {
+  @mixin desktop-medium-up {
     @media only screen and (min-width: $large) {
+      @content
+    };
+  }
+
+  @mixin desktop-up {
+    @media only screen and (min-width: $larger) {
       @content
     };
   }

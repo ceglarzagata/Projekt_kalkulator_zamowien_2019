@@ -53,7 +53,7 @@ class ParametersFormStandard extends Component {
             Object.entries(parameters).map(([key, params]) => {
               if(key === "pattern"){
                 return (
-                  <div key = {key}>
+                  <div key = {key} className = "parameter">
                     <label>Wybierz {key}: </label>                
                     {
                       params.map(param => {
@@ -76,7 +76,7 @@ class ParametersFormStandard extends Component {
                 )
               } else {
                 return (
-                  <div key = {key}>
+                  <div key = {key} className = "parameter">
                     <label htmlFor = {key}>Wybierz {key}: </label>
                     <select 
                       id = {key} 
@@ -96,7 +96,6 @@ class ParametersFormStandard extends Component {
                       )
                     }
                     </select>
-                    <hr />
                   </div>
                 )
               }
@@ -214,7 +213,7 @@ class Calculator extends Component {
       return "Trwa ładowanie"
     }
     return (
-      <div className = "container">        
+      <main className = "container">        
         <form style = {{display: this.state.display}}>
           <label className = "mainLabel">Sprawdź ile będzie kosztował Twój: </label>
           <select className = "mainSelect" onChange = {this.choose}>
@@ -247,7 +246,7 @@ class Calculator extends Component {
           </div>
         </form>
           
-        {/* <m style = {{display: this.state.display === "block" ? "none" : "block"}}> */}
+        {/* <main style = {{display: this.state.display === "block" ? "none" : "block"}}> */}
         <div style = {{display: "block"}}>              
               
           <Order 
@@ -256,7 +255,7 @@ class Calculator extends Component {
             finalSum = {this.state.sum}
           />
         </div>   
-      </div>
+      </main>
     );
   }
 }

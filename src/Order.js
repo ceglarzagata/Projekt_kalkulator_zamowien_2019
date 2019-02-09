@@ -11,7 +11,8 @@ class Order extends Component {
       info: "",
       display: "none",
       disabled: false,
-      buttonClass: "button"
+      buttonClass: "button",
+      validationInfo: ""
     }
   }
   changeOrder = (e) => {
@@ -21,27 +22,49 @@ class Order extends Component {
   }
   handleSubmit = (event) => { 
     event.preventDefault();
-    fetch('http://localhost:3008/orders', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        "name": this.state.name,
-        "surname": this.state.surname,
-        "phone": this.state.phone,
-        "mail": this.state.mail,
-        "info": this.state.info,
-        "product": this.props.product,
-        "parameters": this.props.parameters,
-        "price": this.props.finalSum
-      })
-      });
+    if (this.state.name === "" || this.state.name.length < 2){
       this.setState({
-        disabled: true,
-        buttonClass: "button disabled"
+        validationInfo: "Podaj imię"
       })
+    } else if (this.state.surname === "" || this.state.surname.length < 2) {
+      this.setState({
+        validationInfo: "Podaj nazwisko"
+      })
+    } else if (this.state.phone === "") {
+      this.setState({
+        validationInfo: "Podaj numer telefonu"
+      })
+    } else if (this.state.phone.length !== 9) {
+      this.setState({
+        validationInfo: "Sprawdź czy wpisałaś/eś poprawny numer telefonu"
+      })
+    } else if (this.state.mail === "") {
+      this.setState({
+        validationInfo: "Podaj adres e-mail"
+      })
+    } else {
+      fetch('http://localhost:3008/orders', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "name": this.state.name,
+          "surname": this.state.surname,
+          "phone": this.state.phone,
+          "mail": this.state.mail,
+          "info": this.state.info,
+          "product": this.props.product,
+          "parameters": this.props.parameters,
+          "price": this.props.finalSum
+        })
+        });
+        this.setState({
+          disabled: true,
+          buttonClass: "button disabled"
+        })
+      }
    };
   render() {
     return (
@@ -66,7 +89,7 @@ class Order extends Component {
                 onChange = {this.changeOrder}
               />
             </label>
-            <label>Numer telefonu
+            <label>Numer telefonu (np. 123456789)
               <input 
                 type = "number" 
                 name = "phone" 
@@ -113,6 +136,7 @@ class Order extends Component {
             </button>
           </div>          
         </form>
+        <div className = "validationInfo">{this.state.validationInfo}</div>
         <div className = "orderConfirmationPopUp" style = {{display: this.state.display}}></div>
       </div>
     );

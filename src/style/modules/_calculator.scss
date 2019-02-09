@@ -1,3 +1,13 @@
+main.container {
+    padding: 2rem 0;
+    @include desktop-medium-up {
+        width: 80%;
+        margin: 0 auto;
+    }
+    @include desktop-up {
+        width: 45%;
+    }
+}
 .mainLabel {
     font-size: 1.5rem;
     font-weight: bold;
@@ -10,18 +20,29 @@
     font-weight: bold;
     display: block;
     margin: 0 auto;
-    padding: 0.1rem 0 0.2rem 1rem;
+    padding: 0.1rem 1rem;
     text-align: center;
     box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.75);
 }
 .formCalculator {
+    margin: 1.5rem 0;
     @include medium-up {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
     }
     .formContent {
         @include medium-up {
-            width:40%;
+            width:48%;
+        }
+        .parameter {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            &:last-child {
+                border: none;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }            
         }
         select {
             margin-left: 0.4rem;
@@ -46,7 +67,7 @@
             border-radius: 0.4rem;
         }
         @include medium-up {
-            width: 40%;
+            width: 48%;
         }
     }
 }
