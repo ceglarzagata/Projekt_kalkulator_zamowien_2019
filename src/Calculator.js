@@ -1,44 +1,6 @@
 import React, { Component } from 'react';
 import Order from './Order';
 
-// class BeltLength extends Component {
-//   constructor(props){
-//     super(props);
-//     this.state = {
-//       lengthValue: ""
-//     }
-//   }
-//   changeBeltLength = (e) => {
-//     let value = e.target.value;
-//     let lengthPrice = 0;
-//     if (value < 90){
-//       lengthPrice = this.props.lengthProperties[0].price
-//     } else if (value >=90 && value < 120){
-//       lengthPrice = this.props.lengthProperties[1].price
-//     } else if (value >= 120) {
-//       lengthPrice = this.props.lengthProperties[2].price
-//     }
-//     this.setState ({
-//       lengthValue: value
-//     })
-//     this.props.changeBeltLength(lengthPrice, {[this.props.keyValue]: lengthPrice})
-//   }
-//   render(){
-//     return (
-//       <div>
-//         <label htmlFor = {this.props.keyValue}>Podaj obwód w pasie (w cm):</label>
-//         <input
-//           type = "number"                
-//           id = {this.props.keyValue}
-//           value = {this.state.lengthValue} 
-//           onChange = {this.changeBeltLength}             
-//         />
-//         <hr />
-//       </div>
-//     )
-//   }
-// }
-
 class ParametersFormStandard extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +8,11 @@ class ParametersFormStandard extends Component {
       lengthValue: "",
       parametersObject: {},
       paramsToOrder: {},
-      selectedOption: "kotwica"
+      selectedOption: "kotwica",
+      thickness: "",
+      color: "",
+      pocketsNO: "",
+      length: ""
     };
   }
   change = (e) => {
@@ -65,7 +31,6 @@ class ParametersFormStandard extends Component {
     }
    }   
   };
-
   updateSumInParent = () => {
     let parametersObjectValue = Object.values(this.state.parametersObject);
     let sumUp;
@@ -74,21 +39,11 @@ class ParametersFormStandard extends Component {
         return prev + curr;
       })
     }
-    // console.log(sumUp);
-    // console.log("objeeeeeeekt", this.state.parametersObject);
-
     this.props.changePrice(
       sumUp,
       this.state.paramsToOrder
     );
   }
-  // changeBelt = (dataFromChild, objectFromChild) => {
-  //   this.setState({
-  //     lengthValue: dataFromChild,
-  //     aaaaaa: objectFromChild
-  //   })
-  // };
-
   render() {
     const { parameters } = this.props.choosen;
     return (
@@ -119,18 +74,7 @@ class ParametersFormStandard extends Component {
                     }                
                   </div>
                 )
-              } 
-              // else if (key === "length") {
-              //   return (
-              //     <BeltLength 
-              //       key = {key} 
-              //       keyValue = {key}
-              //       lengthProperties = {params}
-              //       changeBeltLength = {this.changeBelt}
-              //     />
-              //   )
-              // } 
-              else {
+              } else {
                 return (
                   <div key = {key}>
                     <label htmlFor = {key}>Wybierz {key}: </label>
@@ -158,14 +102,17 @@ class ParametersFormStandard extends Component {
               }
             })
           }
-          {/* <p>{this.state.lengthValue}</p> */}
         </div>
         <div className = "images">
           {
             Object.entries(parameters).map(([key, params]) => {
               return (
-                params.map(param => { 
+                params.map((param, index) => { 
                   if (this.state[key] === param.name || this.state.selectedOption === param.name){
+                    return (
+                      <img key = {param.name} src = {param.image} alt = {param.name}/>
+                    )
+                  } else if (index === 0 && this.state[key] === "") {
                     return (
                       <img key = {param.name} src = {param.image} alt = {param.name}/>
                     )
@@ -190,14 +137,16 @@ class Calculator extends Component {
       choosen: null,
       sum: null,
       parametersObject: {},
-      display: "block"
+      display: "block",
+      key: 0
     }
   }
   choose = (e) => {
     this.setState({
       // eslint-disable-next-line
       choosen: this.state.products.find(row => row.id == e.target.value),
-      parametersObject: 0
+      parametersObject: 0,
+      key: this.state.key + 1
     }, this.updatePrice);  
   };
   updatePrice = () => {
@@ -208,7 +157,7 @@ class Calculator extends Component {
     for (const [key, value] of Object.entries(parameters)){
       for (const [ i, elem] of Object.entries(value)){
         // eslint-disable-next-line
-        if(i == 0){
+        if (i == 0){
           this.setState(prevState => ({
             parametersObject: {...prevState.parametersObject, [key]: elem.name},
           }), 
@@ -218,7 +167,6 @@ class Calculator extends Component {
     }    
   }
   changePrice = (priceFromChild, parametersObjectFromChild) => {
-    console.log(parametersObjectFromChild)
     this.setState(prevState => ({
       sum: this.state.choosen.standardPrice + priceFromChild,
       parametersObject: Object.assign({...prevState.parametersObject}, parametersObjectFromChild)
@@ -282,8 +230,12 @@ class Calculator extends Component {
                 )
               })
             }              
-          </select>            
-          <ParametersFormStandard choosen = {this.state.choosen} changePrice = {this.changePrice}/>
+          </select>  
+          <ParametersFormStandard
+            key = {this.state.key}
+            choosen = {this.state.choosen}
+            changePrice = {this.changePrice}
+          />
           <div className = "sumUp">
             <h3>Cena końcowa to {this.state.sum}zł</h3>
             <button 
