@@ -8,7 +8,7 @@ class ParametersFormStandard extends Component {
       lengthValue: "",
       parametersObject: {},
       paramsToOrder: {},
-      selectedOption: "kotwica",
+      selectedOption: "lilijka",
       thickness: "",
       color: "",
       pocketsNO: "",
@@ -51,10 +51,10 @@ class ParametersFormStandard extends Component {
         <div className = "formContent">
           {
             Object.entries(parameters).map(([key, params]) => {
-              if(key === "pattern"){
+              if(key === "pattern"){                
                 return (
                   <div key = {key} className = "parameter">
-                    <label>Wybierz {key}: </label>                
+                    <label className = "radioLabel">Wybierz {key}: </label>                
                     {
                       params.map(param => {
                         return (
@@ -75,6 +75,7 @@ class ParametersFormStandard extends Component {
                   </div>
                 )
               } else {
+
                 return (
                   <div key = {key} className = "parameter">
                     <label htmlFor = {key}>Wybierz {key}: </label>
@@ -109,11 +110,11 @@ class ParametersFormStandard extends Component {
                 params.map((param, index) => { 
                   if (this.state[key] === param.name || this.state.selectedOption === param.name){
                     return (
-                      <img key = {param.name} src = {param.image} alt = {param.name}/>
+                      <div className = "image" key = {param.name} style = {{backgroundImage: `url(${param.image})`}}></div>
                     )
                   } else if (index === 0 && this.state[key] === "") {
                     return (
-                      <img key = {param.name} src = {param.image} alt = {param.name}/>
+                      <div className = "image" key = {param.name} style = {{backgroundImage: `url(${param.image})`}}></div>
                     )
                   } else {
                     return null
@@ -122,6 +123,7 @@ class ParametersFormStandard extends Component {
               ) 
             })
           }
+
         </div>
       </div>
     )
@@ -134,7 +136,8 @@ class SumUp extends Component {
       display: "block"
     }
   }
-  orderButton = () => {
+  orderButton = (e) => {
+    e.preventDefault();
     this.setState({
       display: "none"
     }, () => this.props.orderButton(this.state.display))    
@@ -196,7 +199,7 @@ class Calculator extends Component {
       parametersObject: Object.assign({...prevState.parametersObject}, parametersObjectFromChild)
     }))
   }
-  orderButton = (data) => {
+  orderButton = (data) => {    
     this.setState({
       display: data
     })

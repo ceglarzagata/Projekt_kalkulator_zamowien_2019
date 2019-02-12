@@ -9,68 +9,68 @@
             {
               "name": "1.5 mm",
               "price": 0,
-              "image": "https://picsum.photos/100?image=44"
+              "image": "https://picsum.photos/300?image=44"
             },
             {
               "name": "2.5 mm",
               "price": 15,
-              "image": "https://picsum.photos/100?image=45"
+              "image": "https://picsum.photos/300?image=45"
             },
             {
               "name": "3.5 mm",
               "price": 30,
-              "image": "https://picsum.photos/100?image=46"
+              "image": "https://picsum.photos/300?image=46"
             }
           ],
           "color": [
             {
               "name": "naturalny",
               "price": 0,
-              "image": "https://picsum.photos/100?image=88"
+              "image": "https://picsum.photos/300?image=49"
             },
             {
               "name": "ciemny brąz",
               "price": 10,
-              "image": "https://picsum.photos/100?image=89"
+              "image": "https://picsum.photos/300?image=89"
             },
             {
               "name": "czarny",
               "price": 10,
-              "image": "https://picsum.photos/100?image=90"
+              "image": "https://picsum.photos/300?image=90"
             }
           ],
           "pocketsNO": [
             {
-              "name": "2 kieszenie",
+              "name": "3 kieszenie",
               "price": 0,
-              "image": "https://picsum.photos/100?image=91"
+              "image": "https://picsum.photos/300?image=91"
             },
             {
               "name": "4 kieszenie",
               "price": 10,
-              "image": "https://picsum.photos/100?image=92"
+              "image": "https://picsum.photos/300?image=92"
             },
             {
               "name": "6 kieszeni",
               "price": 20,
-              "image": "https://picsum.photos/100?image=93"
+              "image": "https://picsum.photos/300?image=93"
             }
           ],
           "pattern": [
             {
-              "name": "kotwica",
+              "name": "lilijka",
               "price": 0,
-              "image": "https://picsum.photos/100?image=194"
+              "image": "https://picsum.photos/300?image=19"
             },
             {
               "name": "jeleń",
               "price": 0,
-              "image": "https://picsum.photos/100?image=11"
+              "image": "https://picsum.photos/300?image=11"
             },
             {
               "name": "ster",
               "price": 0,
-              "image": "https://picsum.photos/100?image=12"
+              "image": "https://picsum.photos/300?image=12"
             }
           ]
         }
@@ -84,60 +84,63 @@
             {
               "name": "1.5 mm",
               "price": 0,
-              "image": "https://picsum.photos/100?image=13"
+              "image": "https://picsum.photos/300?image=13"
             },
             {
               "name": "2.5 mm",
               "price": 5,
-              "image": "https://picsum.photos/100?image=14"
+              "image": "https://picsum.photos/300?image=14"
             },
             {
               "name": "3.5 mm",
               "price": 10,
-              "image": "https://picsum.photos/100?image=15"
+              "image": "https://picsum.photos/300?image=15"
             }
           ],
           "color": [
             {
               "name": "naturalny",
               "price": 0,
-              "image": "https://picsum.photos/100?image=16"
+              "image": "https://picsum.photos/300?image=48"
             },
             {
               "name": "ciemny brąz",
               "price": 5,
-              "image": "https://picsum.photos/100?image=17"
+              "image": "https://picsum.photos/300?image=17"
             },
             {
               "name": "czarny",
               "price": 5,
-              "image": "https://picsum.photos/100?image=18"
+              "image": "https://picsum.photos/300?image=18"
             }
           ],
           "pocketsNO": [
             {
               "name": "1 kieszeń",
               "price": 0,
-              "image": "https://picsum.photos/100?image=19"
+              "image": "https://picsum.photos/300?image=19"
             },
             {
               "name": "2 kieszenie",
               "price": 5,
-              "image": "https://picsum.photos/100?image=0=20"
+              "image": "https://picsum.photos/300?image=0=20"
             }
           ],
           "pattern": [
             {
-              "name": "kotwica",
-              "image": "https://picsum.photos/100?image=21"
+              "name": "lilijka",
+              "price": 0,
+              "image": "https://picsum.photos/300?image=19"
             },
             {
               "name": "jeleń",
-              "image": "https://picsum.photos/100?image=22"
+              "price": 0,
+              "image": "https://picsum.photos/300?image=11"
             },
             {
               "name": "ster",
-              "image": "https://picsum.photos/100?image=23"
+              "price": 0,
+              "image": "https://picsum.photos/300?image=12"
             }
           ]
         }
@@ -151,51 +154,51 @@
             {
               "name": "1.5 mm",
               "price": 0,
-              "image": "https://picsum.photos/100?image=24"
+              "image": "https://picsum.photos/300?image=24"
             },
             {
               "name": "2.5 mm",
               "price": 20,
-              "image": "https://picsum.photos/100?image=25"
+              "image": "https://picsum.photos/300?image=25"
             },
             {
               "name": "3.5 mm",
               "price": 30,
-              "image": "https://picsum.photos/100?image=26"
+              "image": "https://picsum.photos/300?image=26"
             }
           ],
           "length": [
             {
               "name": "90 cm",
               "price": 0,
-              "image": "https://picsum.photos/100?image=27"
+              "image": "https://picsum.photos/300?image=27"
             },
             {
               "name": "120 cm",
               "price": 10,
-              "image": "https://picsum.photos/100?image=28"
+              "image": "https://picsum.photos/300?image=28"
             },
             {
               "name": "150 cm",
               "price": 20,
-              "image": "https://picsum.photos/100?image=29"
+              "image": "https://picsum.photos/300?image=29"
             }
           ],
           "color": [
             {
               "name": "naturalny",
               "price": 0,
-              "image": "https://picsum.photos/100?image=30"
+              "image": "https://picsum.photos/300?image=30"
             },
             {
               "name": "ciemny brąz",
               "price": 15,
-              "image": "https://picsum.photos/100?image=31"
+              "image": "https://picsum.photos/300?image=31"
             },
             {
               "name": "czarny",
               "price": 15,
-              "image": "https://picsum.photos/100?image=32"
+              "image": "https://picsum.photos/300?image=32"
             }
           ]
         }

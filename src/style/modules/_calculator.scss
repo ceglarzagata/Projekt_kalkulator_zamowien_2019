@@ -33,6 +33,9 @@ main.container {
     .formContent {
         @include medium-up {
             width:48%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .parameter {
             border-bottom: 1px solid #ccc;
@@ -42,12 +45,18 @@ main.container {
                 border: none;
                 padding-bottom: 0;
                 margin-bottom: 0;
-            }            
+            }       
         }
         select {
             margin-left: 0.4rem;
             padding:  0.1rem 0.4rem;
             border-radius: 0.4rem; 
+        }
+        .radioLabel {
+            @include medium-up {
+                display: block;
+                margin-bottom: 0.5rem
+            }
         }
         .radio {
             display: inline-block;
@@ -58,16 +67,25 @@ main.container {
         }
     }
     .images {
-        margin: 1rem 0;
+        margin: 1rem auto;
         display: flex;
         flex-wrap: wrap;
-        img {
-            width: 50%;
-            box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.75);
-            border-radius: 0.4rem;
-        }
+        justify-content: space-between;
         @include medium-up {
             width: 48%;
+            margin: 1rem 0;
+        }
+        .image {
+            height: 150px;
+            width: 48%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            box-shadow: 0px 0px 5px 0px rgba(158, 158, 158, 0.75);
+            border-radius: 0.4rem;
+            &:nth-child(-n + 2){
+                margin-bottom: 1rem;
+            }
         }
     }
 }

@@ -1,21 +1,5 @@
 import React, { Component } from 'react';
-
-
-// class Slider extends Component {
-//   constructor(props){
-//     super(props);
-//     this.state = {
-
-//     }
-//   }
-//   render () {
-//     return (
-//       <div className = "slider">
-      
-//       </div>
-//     )
-//   }
-// }
+import baner from './images/baner.jpg'
 
 class Header extends Component {
   render() {
@@ -27,9 +11,8 @@ class Header extends Component {
             <p>Masz pytania? <strong>Napisz do nas!</strong></p>
             <a href = "mail: PunchLineLetherCraft@gmail.com">PunchLineLetherCraft@gmail.com</a>
           </div>
-          {/* <Slider/> */}
         </header>
-        <img src = "https://picsum.photos/2000/600" alt = "leather"/>   
+        <img src = {baner} alt = "leather"/>   
       </>
     );
   }
