@@ -51,7 +51,7 @@ class ParametersFormStandard extends Component {
         <div className = "formContent">
           {
             Object.entries(parameters).map(([key, params]) => {
-              if(key === "pattern"){                
+              if(key === "pattern"){
                 return (
                   <div key = {key} className = "parameter">
                     <label className = "radioLabel">Wybierz {key}: </label>                

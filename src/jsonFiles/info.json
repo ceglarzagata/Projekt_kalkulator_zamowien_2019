@@ -26,34 +26,34 @@
             {
               "name": "naturalny",
               "price": 0,
-              "image": "https://picsum.photos/300?image=49"
+              "image": "images/naturalny.jpg"
             },
             {
               "name": "ciemny brąz",
               "price": 10,
-              "image": "https://picsum.photos/300?image=89"
+              "image": "images/braz.jpg"
             },
             {
               "name": "czarny",
               "price": 10,
-              "image": "https://picsum.photos/300?image=90"
+              "image": "images/czarny.jpg"
             }
           ],
           "pocketsNO": [
             {
               "name": "3 kieszenie",
               "price": 0,
-              "image": "https://picsum.photos/300?image=91"
+              "image": "images/p3.jpg"
             },
             {
               "name": "4 kieszenie",
               "price": 10,
-              "image": "https://picsum.photos/300?image=92"
+              "image": "images/p4.jpg"
             },
             {
               "name": "6 kieszeni",
               "price": 20,
-              "image": "https://picsum.photos/300?image=93"
+              "image": "images/p6.jpg"
             }
           ],
           "pattern": [
@@ -101,17 +101,17 @@
             {
               "name": "naturalny",
               "price": 0,
-              "image": "https://picsum.photos/300?image=48"
+              "image": "images/naturalny.jpg"
             },
             {
               "name": "ciemny brąz",
               "price": 5,
-              "image": "https://picsum.photos/300?image=17"
+              "image": "images/braz.jpg"
             },
             {
               "name": "czarny",
               "price": 5,
-              "image": "https://picsum.photos/300?image=18"
+              "image": "images/czarny.jpg"
             }
           ],
           "pocketsNO": [
@@ -171,34 +171,34 @@
             {
               "name": "90 cm",
               "price": 0,
-              "image": "https://picsum.photos/300?image=27"
+              "image": "images/90.jpg"
             },
             {
               "name": "120 cm",
               "price": 10,
-              "image": "https://picsum.photos/300?image=28"
+              "image": "images/120.jpg"
             },
             {
               "name": "150 cm",
               "price": 20,
-              "image": "https://picsum.photos/300?image=29"
+              "image": "images/150.jpg"
             }
           ],
           "color": [
             {
               "name": "naturalny",
               "price": 0,
-              "image": "https://picsum.photos/300?image=30"
+              "image": "images/naturalny.jpg"
             },
             {
               "name": "ciemny brąz",
               "price": 15,
-              "image": "https://picsum.photos/300?image=31"
+              "image": "images/braz.jpg"
             },
             {
               "name": "czarny",
               "price": 15,
-              "image": "https://picsum.photos/300?image=32"
+              "image": "images/czarny.jpg"
             }
           ]
         }
