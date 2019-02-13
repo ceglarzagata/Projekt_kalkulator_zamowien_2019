@@ -20,12 +20,12 @@ class ParametersFormStandard extends Component {
       [e.target.name]: e.target.value
    })
    const { parameters } = this.props.choosen;
-   for (const [key, value] of Object.entries(parameters)){
-    for (const [ , elem] of Object.entries(value)){
+   for (const [, value] of Object.entries(parameters)){
+    for (const [ , elem] of Object.entries(value[1])){
       if(elem.name === e.target.value){
         this.setState(prevState => ({
-          paramsToOrder: {...prevState.paramsToOrder, [key]: elem.name},
-          parametersObject: {...prevState.parametersObject, [key]: elem.price}
+          paramsToOrder: {...prevState.paramsToOrder, [value[0]]: elem.name},
+          parametersObject: {...prevState.parametersObject, [value[0]]: elem.price}
         }), this.updateSumInParent);  
       }
     }
@@ -52,11 +52,12 @@ class ParametersFormStandard extends Component {
           {
             Object.entries(parameters).map(([key, params]) => {
               if(key === "pattern"){
+                // let paramName = "wzór";
                 return (
                   <div key = {key} className = "parameter">
-                    <label className = "radioLabel">Wybierz {key}: </label>                
+                    <label className = "radioLabel">Wybierz {params[0]}: </label>                
                     {
-                      params.map(param => {
+                      params[1].map(param => {
                         return (
                           <div key = {param.name} className = "radio">
                             <input
@@ -75,17 +76,16 @@ class ParametersFormStandard extends Component {
                   </div>
                 )
               } else {
-
                 return (
                   <div key = {key} className = "parameter">
-                    <label htmlFor = {key}>Wybierz {key}: </label>
+                    <label htmlFor = {key}>Wybierz {params[0]}: </label>
                     <select 
                       id = {key} 
                       name = {key} 
                       onChange = {this.change}
                     >
                     {
-                      params.map(param => {
+                      params[1].map(param => {
                         return (
                           <option
                             key = {param.name}
@@ -107,7 +107,7 @@ class ParametersFormStandard extends Component {
           {
             Object.entries(parameters).map(([key, params]) => {
               return (
-                params.map((param, index) => { 
+                params[1].map((param, index) => { 
                   if (this.state[key] === param.name || this.state.selectedOption === param.name){
                     return (
                       <div className = "image" key = {param.name} style = {{backgroundImage: `url(${param.image})`}}></div>
@@ -123,7 +123,6 @@ class ParametersFormStandard extends Component {
               ) 
             })
           }
-
         </div>
       </div>
     )
@@ -165,7 +164,8 @@ class Calculator extends Component {
       sum: null,
       parametersObject: {},
       display: "block",
-      key: 0
+      key: 0,
+      keyProduct: 0
     }
   }
   choose = (e) => {
@@ -181,12 +181,12 @@ class Calculator extends Component {
       sum: this.state.choosen.standardPrice
     })
     const { parameters } = this.state.choosen;
-    for (const [key, value] of Object.entries(parameters)){
-      for (const [ i, elem] of Object.entries(value)){
+    for (const [, value] of Object.entries(parameters)){
+      for (const [ i, elem] of Object.entries(value[1])){
         // eslint-disable-next-line
         if (i == 0){
           this.setState(prevState => ({
-            parametersObject: {...prevState.parametersObject, [key]: elem.name},
+            parametersObject: {...prevState.parametersObject, [value[0]]: elem.name},
           }), 
           );  
         }
@@ -204,15 +204,14 @@ class Calculator extends Component {
       display: data
     })
   }
-
   initial = () => {
     const { parameters } = this.state.choosen;
-    for (const [key, value] of Object.entries(parameters)){
-      for (const [ i, elem] of Object.entries(value)){
+    for (const [, value] of Object.entries(parameters)){
+      for (const [ i, elem] of Object.entries(value[1])){
         // eslint-disable-next-line
         if(i == 0){
           this.setState(prevState => ({
-            parametersObject: {...prevState.parametersObject, [key]: elem.name},
+            parametersObject: {...prevState.parametersObject, [value[0]]: elem.name},
           }), 
           );  
         }
@@ -266,8 +265,7 @@ class Calculator extends Component {
             sum = {this.state.sum} 
             orderButton = {this.orderButton}
           />
-        </form>
-          
+        </form>          
         <div style = {{display: this.state.display === "block" ? "none" : "block"}}>
           <Order 
             product = {this.state.choosen.name} 

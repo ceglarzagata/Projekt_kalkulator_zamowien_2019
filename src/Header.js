@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import baner from './images/baner.jpg'
 
 class Header extends Component {
   render() {
@@ -12,7 +11,7 @@ class Header extends Component {
             <a href = "mail: PunchLineLetherCraft@gmail.com">PunchLineLetherCraft@gmail.com</a>
           </div>
         </header>
-        <img src = {baner} alt = "leather"/>   
+        <img src = "images/baner.jpg" alt = "leather"/>   
       </>
     );
   }

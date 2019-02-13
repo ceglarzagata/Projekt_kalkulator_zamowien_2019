@@ -6,6 +6,8 @@
         "standardPrice": 100,
         "parameters": {
           "thickness": [
+            "grubość",
+            [
             {
               "name": "1.5 mm",
               "price": 0,
@@ -21,8 +23,10 @@
               "price": 30,
               "image": "https://picsum.photos/300?image=46"
             }
-          ],
+          ]],
           "color": [
+          "kolor",
+          [
             {
               "name": "naturalny",
               "price": 0,
@@ -38,8 +42,10 @@
               "price": 10,
               "image": "images/czarny.jpg"
             }
-          ],
+          ]],
           "pocketsNO": [
+            "liczba kieszeni",
+          [
             {
               "name": "3 kieszenie",
               "price": 0,
@@ -55,8 +61,10 @@
               "price": 20,
               "image": "images/p6.jpg"
             }
-          ],
+          ]],
           "pattern": [
+            "wzór",
+            [
             {
               "name": "lilijka",
               "price": 0,
@@ -72,7 +80,7 @@
               "price": 0,
               "image": "https://picsum.photos/300?image=12"
             }
-          ]
+          ]]
         }
       },
       {
@@ -81,6 +89,8 @@
         "standardPrice": 80,
         "parameters": {  
           "thickness": [
+            "grubość",
+          [
             {
               "name": "1.5 mm",
               "price": 0,
@@ -96,8 +106,10 @@
               "price": 10,
               "image": "https://picsum.photos/300?image=15"
             }
-          ],
+          ]],
           "color": [
+            "kolor",
+            [
             {
               "name": "naturalny",
               "price": 0,
@@ -113,8 +125,10 @@
               "price": 5,
               "image": "images/czarny.jpg"
             }
-          ],
-          "pocketsNO": [
+          ]],
+          "pocketsNO":[
+            "liczba kieszeni",
+            [
             {
               "name": "1 kieszeń",
               "price": 0,
@@ -125,8 +139,10 @@
               "price": 5,
               "image": "https://picsum.photos/300?image=0=20"
             }
-          ],
+          ]],
           "pattern": [
+            "wzór",
+            [
             {
               "name": "lilijka",
               "price": 0,
@@ -142,7 +158,7 @@
               "price": 0,
               "image": "https://picsum.photos/300?image=12"
             }
-          ]
+          ]]
         }
       },
       {
@@ -151,6 +167,8 @@
         "standardPrice": 120,
         "parameters": { 
           "thickness": [
+            "grubość",
+          [
             {
               "name": "1.5 mm",
               "price": 0,
@@ -166,8 +184,10 @@
               "price": 30,
               "image": "https://picsum.photos/300?image=26"
             }
-          ],
+          ]],
           "length": [
+            "długość",
+            [
             {
               "name": "90 cm",
               "price": 0,
@@ -183,8 +203,10 @@
               "price": 20,
               "image": "images/150.jpg"
             }
-          ],
+          ]],
           "color": [
+            "kolor",
+            [
             {
               "name": "naturalny",
               "price": 0,
@@ -200,7 +222,7 @@
               "price": 15,
               "image": "images/czarny.jpg"
             }
-          ]
+          ]]
         }
       }
     ]

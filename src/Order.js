@@ -73,8 +73,12 @@ class Order extends Component {
           validationDisplay: "none",
           popUpDisplay: "block"
         })
-      }
-   };
+    }
+  };
+  resetClick = (e) => {
+      e.preventDefault();
+      window.location.reload();
+  }
   render() {
     return (
       <div className = "orderSection">
@@ -153,6 +157,7 @@ class Order extends Component {
         <div 
           className = "orderConfirmationPopUp" 
           style = {{display: this.state.popUpDisplay}}
+          onClick = {this.resetClick}
         >
           Twoje zamówienie zostało wysłane poprawnie!
           <i className = "far fa-check-circle"></i>
