@@ -11,17 +11,17 @@
             {
               "name": "1.5 mm",
               "price": 0,
-              "image": "https://picsum.photos/300?image=44"
+              "image": "images/g1.jpg"
             },
             {
               "name": "2.5 mm",
               "price": 15,
-              "image": "https://picsum.photos/300?image=45"
+              "image": "images/g2.jpg"
             },
             {
               "name": "3.5 mm",
               "price": 30,
-              "image": "https://picsum.photos/300?image=46"
+              "image": "images/g3.jpg"
             }
           ]],
           "color": [
@@ -68,17 +68,17 @@
             {
               "name": "lilijka",
               "price": 0,
-              "image": "https://picsum.photos/300?image=19"
+              "image": "images/lilijka.jpg"
             },
             {
               "name": "jeleń",
               "price": 0,
-              "image": "https://picsum.photos/300?image=11"
+              "image": "images/jelen.jpg"
             },
             {
               "name": "ster",
               "price": 0,
-              "image": "https://picsum.photos/300?image=12"
+              "image": "images/ster.jpg"
             }
           ]]
         }
@@ -94,17 +94,17 @@
             {
               "name": "1.5 mm",
               "price": 0,
-              "image": "https://picsum.photos/300?image=13"
+              "image": "images/g1.jpg"
             },
             {
               "name": "2.5 mm",
               "price": 5,
-              "image": "https://picsum.photos/300?image=14"
+              "image": "images/g2.jpg"
             },
             {
               "name": "3.5 mm",
               "price": 10,
-              "image": "https://picsum.photos/300?image=15"
+              "image": "images/g3.jpg"
             }
           ]],
           "color": [
@@ -132,12 +132,12 @@
             {
               "name": "1 kieszeń",
               "price": 0,
-              "image": "https://picsum.photos/300?image=19"
+              "image": "images/w1.jpg"
             },
             {
               "name": "2 kieszenie",
               "price": 5,
-              "image": "https://picsum.photos/300?image=0=20"
+              "image": "images/w2.jpg"
             }
           ]],
           "pattern": [
@@ -146,17 +146,17 @@
             {
               "name": "lilijka",
               "price": 0,
-              "image": "https://picsum.photos/300?image=19"
+              "image": "images/lilijka.jpg"
             },
             {
               "name": "jeleń",
               "price": 0,
-              "image": "https://picsum.photos/300?image=11"
+              "image": "images/jelen.jpg"
             },
             {
               "name": "ster",
               "price": 0,
-              "image": "https://picsum.photos/300?image=12"
+              "image": "images/ster.jpg"
             }
           ]]
         }
@@ -172,17 +172,17 @@
             {
               "name": "1.5 mm",
               "price": 0,
-              "image": "https://picsum.photos/300?image=24"
+              "image": "images/g1.jpg"
             },
             {
               "name": "2.5 mm",
               "price": 20,
-              "image": "https://picsum.photos/300?image=25"
+              "image": "images/g2.jpg"
             },
             {
               "name": "3.5 mm",
               "price": 30,
-              "image": "https://picsum.photos/300?image=26"
+              "image": "images/g3.jpg"
             }
           ]],
           "length": [

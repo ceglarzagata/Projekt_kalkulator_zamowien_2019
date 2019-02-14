@@ -1,5 +1,20 @@
 {
   "orders": [
-    
+    {
+      "name": "aaa",
+      "surname": "aaaa",
+      "phone": "123456789",
+      "mail": "hfghfg@grgrgerg.pl",
+      "info": "",
+      "product": "wizytownik",
+      "parameters": {
+        "grubość": "1.5 mm",
+        "kolor": "naturalny",
+        "liczba kieszeni": "1 kieszeń",
+        "wzór": "lilijka"
+      },
+      "price": 80,
+      "id": 1
+    }
   ]
 }
